@@ -19,15 +19,6 @@ class FileProviderExtension: NSFileProviderExtension {
   
   override init() {
     super.init()
-    
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(FileProviderExtension.notification),
-                                           name: nil,
-                                           object: nil)
-  }
-  
-  @objc func notification(notification: NSNotification) {
-    NSLog("notification: \(notification.name.rawValue)")
   }
   
   override func item(for identifier: NSFileProviderItemIdentifier) throws -> NSFileProviderItem {
@@ -106,8 +97,6 @@ class FileProviderExtension: NSFileProviderExtension {
      }
      }
      */
-    
-    completionHandler?(NSError(domain: NSFileProviderErrorDomain, code: NSFileProviderError.notAuthenticated.rawValue, userInfo:[:]))
     
     // completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
   }
