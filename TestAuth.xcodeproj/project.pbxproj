@@ -75,6 +75,7 @@
 		BAF686201FBAEE0E0021B525 /* DocumentActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentActionViewController.swift; sourceTree = "<group>"; };
 		BAF686231FBAEE0E0021B525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		BAF686251FBAEE0E0021B525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAF686391FBC3E1C0021B525 /* TestAuthFPEUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestAuthFPEUI.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +153,7 @@
 		BAF6861F1FBAEE0E0021B525 /* TestAuthFPEUI */ = {
 			isa = PBXGroup;
 			children = (
+				BAF686391FBC3E1C0021B525 /* TestAuthFPEUI.entitlements */,
 				BAF686201FBAEE0E0021B525 /* DocumentActionViewController.swift */,
 				BAF686221FBAEE0E0021B525 /* MainInterface.storyboard */,
 				BAF686251FBAEE0E0021B525 /* Info.plist */,
@@ -233,10 +235,20 @@
 					BAF6860F1FBAEE0E0021B525 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					BAF6861D1FBAEE0E0021B525 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -507,12 +519,15 @@
 		BAF6862D1FBAEE0F0021B525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TestAuthFPEUI/TestAuthFPEUI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7438RQPFWV;
+				DEVELOPMENT_TEAM = KWN2YL43QC;
 				INFOPLIST_FILE = TestAuthFPEUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sejersbol.TestAuth.TestAuthFPEUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -522,12 +537,15 @@
 		BAF6862E1FBAEE0F0021B525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TestAuthFPEUI/TestAuthFPEUI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7438RQPFWV;
+				DEVELOPMENT_TEAM = KWN2YL43QC;
 				INFOPLIST_FILE = TestAuthFPEUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sejersbol.TestAuth.TestAuthFPEUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -11,8 +11,23 @@ class FileProviderExtension: NSFileProviderExtension {
   
   var fileManager = FileManager()
   
+  let testAuthUserDefaults = UserDefaults(suiteName: "group.com.sejersbol.TestAuth")
+  
+  let notAuthenticatedError = NSError(domain: NSFileProviderErrorDomain,
+                                      code: NSFileProviderError.notAuthenticated.rawValue,
+                                      userInfo: nil)
+  
   override init() {
     super.init()
+    
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(FileProviderExtension.notification),
+                                           name: nil,
+                                           object: nil)
+  }
+  
+  @objc func notification(notification: NSNotification) {
+    NSLog("notification: \(notification.name.rawValue)")
   }
   
   override func item(for identifier: NSFileProviderItemIdentifier) throws -> NSFileProviderItem {
@@ -148,7 +163,17 @@ class FileProviderExtension: NSFileProviderExtension {
     var maybeEnumerator: NSFileProviderEnumerator? = nil
     if (containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer) {
       // TODO: instantiate an enumerator for the container root
-      maybeEnumerator = FileProviderEnumerator(enumeratedItemIdentifier: containerItemIdentifier)
+      if let userAuthenticatedString = testAuthUserDefaults?.value(forKey: "userAuthenticated") as? String {
+        if userAuthenticatedString == "true" {
+          maybeEnumerator = FileProviderEnumerator(enumeratedItemIdentifier: containerItemIdentifier)
+        } else {
+          // Authentication error
+          throw notAuthenticatedError
+        }
+      } else {
+        // Authentication error
+        throw notAuthenticatedError
+      }
     } else if (containerItemIdentifier == NSFileProviderItemIdentifier.workingSet) {
       // TODO: instantiate an enumerator for the working set
     } else {
